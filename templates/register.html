@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block tittle %}Register{% endblock tittle %}
+{% block body %}
+{% if messages %}
+  {% for message in messages %}
+  <div class="container alert alert-warning" role="alert">{{message}} 
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {% endfor %}
+{% endif %}  
+<div class="container">
+    <form action="" method="POST" class="mt-5 col-6" novalidate>
+        {% csrf_token %}
+        {{register_form | crispy}}
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+    
+</div>
+
+{% endblock body %}
